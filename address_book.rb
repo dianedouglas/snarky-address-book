@@ -40,6 +40,30 @@ def list_people
   puts person_chosen.email
   puts person_chosen.address
   puts "\n\n"
+  puts "would you like to delete this person? y/n"
+  sleep 2
+  puts "..."
+  sleep 1
+  puts "perhaps they were mean to you, or you don't want your S.O to know about them?"
+  sleep 2
+  puts "..."
+  sleep 1
+  puts "seriously, I'm just a program... I wont judge... ok maybe a little."
+  sleep 1
+  puts "anyway, just type y or n."
+  delete_option = gets.chomp
+  if delete_option == 'n'
+    puts "congrats on maintaining your friend ship!"
+    sleep 2
+    main_menu
+  elsif delete_option == 'y'
+    @address_book.people.delete(person_chosen)
+    puts "well, they deleted you yesterday too... I know these things... computers talk."
+    sleep 2
+    puts "which reminds me, we need to talk about your browser history... back to main menu."
+    sleep 2
+    main_menu
+  end
 end
 
 def add_person
