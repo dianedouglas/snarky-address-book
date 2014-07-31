@@ -8,12 +8,15 @@ def main_menu
     puts "Hi there! Welcome to the address book."
     puts "Press 'c' to add a contact."
     puts "Press 'x' to exit."
+    puts "Press 'l' to list all yer kin folk."
     user_input = gets.chomp
     if(user_input == 'c')
       add_person
     elsif(user_input == 'x')
       puts "Your adventure has ended. Bye bye!"
       exit
+    elsif(user_input == 'l')
+      list_people
     else
       puts "That is not a menu option. Please try again!"
     end
@@ -21,16 +24,24 @@ def main_menu
 end
 
 def list_people
-  address_book.people.each do |person|
-    puts person.name
+  location = 1
+  @address_book.people.each do |person|
+    location = location.to_s
+    puts location + ". " + person.name + "\n"
+    puts person.phone
+    puts person.email
+    puts person.address
+    puts "\n\n"
+    location = location.to_i + 1
   end
+
 end
 
 def add_person
   puts "Please enter their name."
   name = gets.chomp
   puts "Please enter their phone number."
-  phone = gets.chomp.to_i
+  phone = gets.chomp
   puts "Please enter their email."
   email = gets.chomp
   puts "Please enter their address."
