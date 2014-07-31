@@ -1,7 +1,7 @@
 class Person
   def initialize(name, phone, email, address)
     @name = name
-    @phone= phone
+    @phone = phone
     @email = email
     @address = address
   end
