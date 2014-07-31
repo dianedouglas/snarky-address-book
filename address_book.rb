@@ -2,6 +2,7 @@ require './lib/Person'
 require './lib/Address_Book'
 
 @address_book = Address_Book.new()
+@person_chosen
 
 def main_menu
   loop do
@@ -34,11 +35,30 @@ def list_people
 
   puts "Enter a number to view details on that person."
   person_number_chosen = gets.chomp.to_i
-  person_chosen = @address_book.people[person_number_chosen - 1]
-  puts person_chosen.name
-  puts person_chosen.phone
-  puts person_chosen.email
-  puts person_chosen.address
+  @person_chosen = @address_book.people[person_number_chosen - 1]
+  puts @person_chosen.name
+  puts @person_chosen.phones
+  puts @person_chosen.email
+  puts @person_chosen.address
+  puts 'Would you like to modify the contact information? y/n'
+  modify = gets.chomp
+  if modify == 'y'
+    puts "Press 'p' too add new number, 'e' to add new email, or 'a' to add new address."
+    selection = gets.chomp
+    if selection == 'p'
+      add_phone
+    else
+      main_menu
+    end
+  elsif modify == 'n'
+    puts "just creepin huh?"
+    sleep 2
+    puts "welp... back to main menu!"
+    puts "\n\n"
+    sleep 1
+    main_menu
+  end
+
   puts "\n\n"
   puts "would you like to delete this person? y/n"
   sleep 2
@@ -57,12 +77,23 @@ def list_people
     sleep 2
     main_menu
   elsif delete_option == 'y'
-    @address_book.people.delete(person_chosen)
+    @address_book.people.delete(@person_chosen)
     puts "well, they deleted you yesterday too... I know these things... computers talk."
     sleep 2
     puts "which reminds me, we need to talk about your browser history... back to main menu."
+    puts "\n\n"
     sleep 2
     main_menu
+  end
+end
+
+def add_phone
+  puts "please enter a new number."
+  number = gets.chomp
+  @person_chosen.add_phone(number)
+  puts "Here are all the numbers for #{@person_chosen.name}"
+  @person_chosen.phones.each do |number|
+    puts number
   end
 end
 
