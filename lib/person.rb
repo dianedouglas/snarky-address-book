@@ -2,7 +2,7 @@ class Person
   def initialize(name, phone, email, address)
     @name = name
     @phones = [phone]
-    @email = email
+    @emails = [email]
     @address = address
   end
 
@@ -18,8 +18,12 @@ class Person
     @phones << new_phone
   end
 
-  def email
-    @email
+  def emails
+    @emails
+  end
+
+  def add_email(new_email)
+    @emails << new_email
   end
 
   def address

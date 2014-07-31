@@ -38,7 +38,7 @@ def list_people
   @person_chosen = @address_book.people[person_number_chosen - 1]
   puts @person_chosen.name
   puts @person_chosen.phones
-  puts @person_chosen.email
+  puts @person_chosen.emails
   puts @person_chosen.address
   puts 'Would you like to modify the contact information? y/n'
   modify = gets.chomp
@@ -47,7 +47,15 @@ def list_people
     selection = gets.chomp
     if selection == 'p'
       add_phone
+    elsif selection == 'e'
+      add_email
+    elsif selection == 'a'
+      add_address
     else
+      puts "That was not an option. Returning to main menu!!!!!\n\n"
+      sleep 1
+      puts "Away we go!!!!\n\n"
+      sleep 2
       main_menu
     end
   elsif modify == 'n'
@@ -95,6 +103,20 @@ def add_phone
   @person_chosen.phones.each do |number|
     puts number
   end
+end
+
+def add_email
+  puts "please enter a new email."
+  email = gets.chomp
+  @person_chosen.add_email(email)
+  puts "Here are all the emails for #{@person_chosen.name}"
+  @person_chosen.emails.each do |email|
+    puts email
+  end
+end
+
+def add_address
+  puts "Here's where you would add an address. But I'm still under construction. Sorry!"
 end
 
 def add_person
