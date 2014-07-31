@@ -27,14 +27,19 @@ def list_people
   location = 1
   @address_book.people.each do |person|
     location = location.to_s
-    puts location + ". " + person.name + "\n"
-    puts person.phone
-    puts person.email
-    puts person.address
+    puts location + ". " + person.name
     puts "\n\n"
     location = location.to_i + 1
   end
 
+  puts "Enter a number to view details on that person."
+  person_number_chosen = gets.chomp.to_i
+  person_chosen = @address_book.people[person_number_chosen - 1]
+  puts person_chosen.name
+  puts person_chosen.phone
+  puts person_chosen.email
+  puts person_chosen.address
+  puts "\n\n"
 end
 
 def add_person
