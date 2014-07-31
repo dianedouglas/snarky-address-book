@@ -3,7 +3,7 @@ class Person
     @name = name
     @phones = [phone]
     @emails = [email]
-    @address = address
+    @addresses = [address]
   end
 
   def name
@@ -26,7 +26,11 @@ class Person
     @emails << new_email
   end
 
-  def address
-    @address
+  def addresses
+    @addresses
+  end
+
+  def add_address(new_address)
+    @addresses << new_address
   end
 end

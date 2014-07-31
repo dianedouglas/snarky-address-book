@@ -39,7 +39,7 @@ def list_people
   puts @person_chosen.name
   puts @person_chosen.phones
   puts @person_chosen.emails
-  puts @person_chosen.address
+  puts @person_chosen.addresses
   puts 'Would you like to modify the contact information? y/n'
   modify = gets.chomp
   if modify == 'y'
@@ -116,7 +116,13 @@ def add_email
 end
 
 def add_address
-  puts "Here's where you would add an address. But I'm still under construction. Sorry!"
+  puts "Please enter a new address/crib locale"
+  address = gets.chomp
+  @person_chosen.add_address(address)
+  puts "Here are all the addresses for that person... there's more than one???! They must be baaaaallin'!"
+  @person_chosen.addresses.each do |address|
+    puts address
+  end
 end
 
 def add_person

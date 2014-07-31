@@ -25,7 +25,7 @@ describe Person do
 
   it "lets you read the address of the person" do
     test_person = Person.new('Lee Kebler', '5555555555', 'keebz@keebz.com', '123 street st. Portland, OR 97209')
-    test_person.address.should eq '123 street st. Portland, OR 97209'
+    test_person.addresses.should eq ['123 street st. Portland, OR 97209']
   end
 
   it "lets you add multiple phone numbers for each person" do
@@ -38,6 +38,12 @@ describe Person do
     test_person = Person.new('Lee Kebler', '5555555555', 'keebz@keebz.com', '123 street st. Portland, OR 97209')
     test_person.add_email('keebz@me.com')
     test_person.emails.should eq ['keebz@keebz.com', 'keebz@me.com']
+  end
+
+  it "lets you add multiple addys for each person" do
+    test_person = Person.new('Lee Kebler', '5555555555', 'keebz@keebz.com', '123 street st. Portland, OR 97209')
+    test_person.add_address('123 main st.')
+    test_person.addresses.should eq ['123 street st. Portland, OR 97209', '123 main st.']
   end
 end
 
